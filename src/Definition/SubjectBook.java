@@ -2,9 +2,9 @@ package Definition;
 
 public class SubjectBook extends Book {
     private String SubName;
-    private String Edition;
+    private int Edition;
 
-    public SubjectBook(String name, String author, String noOfCopies, int bookId, String SubName, String Edition) {
+    public SubjectBook(String name, String author, int noOfCopies, int bookId, String SubName, int Edition) {
         super(name, author, noOfCopies, bookId);
         this.SubName = SubName;
         this.Edition = Edition;
@@ -18,11 +18,11 @@ public class SubjectBook extends Book {
         SubName = subName;
     }
 
-    public String getEdition() {
+    public int getEdition() {
         return Edition;
     }
 
-    public void setEdition(String Edition) {
+    public void setEdition(int Edition) {
         this.Edition = Edition;
     }
 }

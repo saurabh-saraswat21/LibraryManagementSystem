@@ -2,7 +2,7 @@ package Definition;
 public class Book {
     private String name;
     private String author;
-    private String noOfCopies;
+    private int noOfCopies;
     private int bookId;
     public String getName() {
         return name;
@@ -20,12 +20,15 @@ public class Book {
         this.author = author;
     }
 
-    public String getNoOfCopies() {
-        return noOfCopies;
+    public Book(String name, String author, int noOfCopies, int bookId) {
+        this.name = name;
+        this.author = author;
+        this.noOfCopies = noOfCopies;
+        this.bookId = bookId;
     }
 
-    public void setNoOfCopies(String noOfCopies) {
-        this.noOfCopies = noOfCopies;
+    public int getNoOfCopies() {
+        return noOfCopies;
     }
 
     public int getBookId() {
@@ -36,10 +39,7 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public Book(String name, String author, String noOfCopies, int bookId) {
-        this.name = name;
-        this.author = author;
+    public void setNoOfCopies(int noOfCopies) {
         this.noOfCopies = noOfCopies;
-        this.bookId = bookId;
     }
 }
