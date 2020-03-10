@@ -42,4 +42,9 @@ public class Book {
     public void setNoOfCopies(int noOfCopies) {
         this.noOfCopies = noOfCopies;
     }
+
+    @Override
+    public String toString() {
+        return "[ Name:- " + this.name + " Author:- " + this.author + " No of copies:- " + this.noOfCopies + " BookID:- " + this.bookId;
+    }
 }
