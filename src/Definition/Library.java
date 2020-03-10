@@ -18,6 +18,20 @@ public class Library implements LibraryAdt {
     public void returnBook(Student student, Book book) {
     }
 
+    @Override
+    public int addBook() {
+        char type = selectBookType();
+        switch (type) {
+            case '1':
+        }
+        return 0;
+    }
+
+    @Override
+    public Book discardBook() {
+        return null;
+    }
+
     private static char selectBookType() {
         Scanner sc = new Scanner(System.in);
         String response;
@@ -42,17 +56,24 @@ public class Library implements LibraryAdt {
 
     }
 
-    @Override
-    public int addBook() {
-        char type = selectBookType();
-        switch (type) {
-            case '1':
-        }
-        return 0;
-    }
+    private static SubjectBook enterSubBookDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter book details:-");
+        System.out.println("Enter The Subject of the book");
+        String subName = sc.next();
+        System.out.println("Enter the name of the book");
+        String name = sc.next();
+        System.out.println("Enter the author of the book");
+        String author = sc.next();
+        System.out.println("Enter the Book Edition");
+        int Edition = sc.nextInt();
+        System.out.println("Enter the Book ID");
+        int bookId = sc.nextInt();
+        System.out.println("Enter the number of copies to be added");
+        int noOfCopies = sc.nextInt();
+        SubjectBook newSubBook = new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
+        return newSubBook;
 
-    @Override
-    public Book discardBook() {
-        return null;
+
     }
 }
