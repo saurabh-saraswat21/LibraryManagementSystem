@@ -18,6 +18,31 @@ public class Library implements LibraryAdt {
     public void returnBook(Student student, Book book) {
     }
 
+    private static OtherBooks enterOtherBookDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter book details:-");
+        System.out.println("Enter The Type of the book");
+        String type = sc.next();
+        System.out.println("Enter the Book Language");
+        String language = sc.next();
+        System.out.println("Enter the name of the book");
+        String name = sc.next();
+        System.out.println("Enter the author of the book");
+        String author = sc.next();
+        System.out.println("Enter the Book ID");
+        int bookId = sc.nextInt();
+        System.out.println("Enter the number of copies to be added");
+        int noOfCopies = sc.nextInt();
+        sc.close();
+        return new OtherBooks(name, author, noOfCopies, bookId, type, language);
+
+    }
+
+    @Override
+    public Book discardBook() {
+        return null;
+    }
+
     private static SubjectBook enterSubBookDetails() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter book details:-");
