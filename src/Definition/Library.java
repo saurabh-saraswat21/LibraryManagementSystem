@@ -37,11 +37,6 @@ public class Library implements LibraryAdt {
         return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
     }
 
-    @Override
-    public Book discardBook() {
-        return null;
-    }
-
     private static char selectBookType() {
         Scanner sc = new Scanner(System.in);
         String response;
@@ -76,6 +71,12 @@ public class Library implements LibraryAdt {
                 totalBooks = totalBooks + newBook.getNoOfCopies();
                 break;
             case '2':
+                OtherBooks newBook1 = enterOtherBookDetails();
+                stock.add(newBook1);
+                totalBooks = totalBooks + newBook1.getNoOfCopies();
+                break;
+            case '0':
+                break;
         }
         return 0;
     }
