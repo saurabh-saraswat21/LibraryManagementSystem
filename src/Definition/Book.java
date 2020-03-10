@@ -43,4 +43,11 @@ public class Book {
     public void setBookId(int bookId) {
         this.bookId = bookId;
     }
+
+    public Book(String name, String author, String noOfCopies, int bookId) {
+        this.name = name;
+        this.author = author;
+        this.noOfCopies = noOfCopies;
+        this.bookId = bookId;
+    }
 }
