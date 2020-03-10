@@ -234,6 +234,16 @@ public class MyList<E> implements MyListAdt<E> {
         return getNode(index).getData();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.size; i++) {
+            E response = this.getData(i);
+            sb.append(response.toString());
+        }
+        return sb.toString();
+    }
+
     /**
      * A private static class that will represent a single element of our list
      * this class has a data value  and a reference value
@@ -272,5 +282,6 @@ public class MyList<E> implements MyListAdt<E> {
         public Node<E> getNext() {
             return next;
         }
+
     }
 }
