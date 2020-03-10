@@ -25,4 +25,9 @@ public class SubjectBook extends Book {
     public void setEdition(int Edition) {
         this.Edition = Edition;
     }
+
+    @Override
+    public String toString() {
+        return "[ Subject name :- " + this.getSubName() + " Edition :- " + this.getEdition() + super.toString();
+    }
 }

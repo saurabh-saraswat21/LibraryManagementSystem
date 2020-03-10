@@ -5,9 +5,9 @@ import Adt.LibraryAdt;
 import java.util.Scanner;
 
 public class Library implements LibraryAdt {
-    private int totalBooks = 0;
-    private int issuedBooks;
-    private MyList<Book> stock;
+    public int totalBooks = 0;
+    public int issuedBooks;
+    public MyList<Book> stock = new MyList<>();
 
     @Override
     public int issueBook(Book book, Student student) {
@@ -58,7 +58,6 @@ public class Library implements LibraryAdt {
         int bookId = sc.nextInt();
         System.out.println("Enter the number of copies to be added");
         int noOfCopies = sc.nextInt();
-        sc.close();
         return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
     }
 
@@ -79,9 +78,6 @@ public class Library implements LibraryAdt {
                 System.out.println("Enter a valid input");
             }
         }
-        sc.close();
-        System.out.println(res);
-
         return res;
 
     }
