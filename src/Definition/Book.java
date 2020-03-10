@@ -45,6 +45,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return "[ Name:- " + this.name + " Author:- " + this.author + " No of copies:- " + this.noOfCopies + " BookID:- " + this.bookId;
+        return " Name:- " + this.getName() + " Author:- " + this.getAuthor() + " No of copies:- " + this.getNoOfCopies() + " BookID:- " + this.getBookId() + "]";
     }
 }
