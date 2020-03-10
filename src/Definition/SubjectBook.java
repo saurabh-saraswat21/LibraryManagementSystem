@@ -22,7 +22,7 @@ public class SubjectBook extends Book {
         return Edition;
     }
 
-    public void setEdition(String edition) {
-        Edition = edition;
+    public void setEdition(String Edition) {
+        this.Edition = Edition;
     }
 }
