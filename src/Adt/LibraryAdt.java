@@ -1,12 +1,11 @@
 package Adt;
 
 import Definition.Book;
-import Definition.Student;
 
 public interface LibraryAdt {
-     int issueBook(Book book, Student student);
+     int issueBook();
 
-     void returnBook(Student student, Book book);
+     void returnBook();
 
      int addBook();
 
