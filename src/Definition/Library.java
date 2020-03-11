@@ -18,24 +18,8 @@ public class Library implements LibraryAdt {
         return 0;
     }
 
-    private static char selectBookType() {
-        String response;
-        char res;
-        while (true) {
-            System.out.println("Enter the type of Book");
-            System.out.println("1. Academic");
-            System.out.println("2. Other");
-            System.out.println("0.Exit");
-            response = sc.next();
-            res = response.charAt(0);
-            if (response.length() == 1 && (res == '1' || res == '2' || res == '0')) {
-                break;
-            } else {
-                System.out.println("Enter a valid input");
-            }
-        }
-        return res;
-
+    @Override
+    public void returnBook() {
     }
 
     @Override
@@ -70,6 +54,79 @@ public class Library implements LibraryAdt {
             }
         }
         return 0;
+    }
+
+    @Override
+    public void addStudent() {
+
+    }
+
+    private static char selectBookType() {
+        String response;
+        char res;
+        while (true) {
+            System.out.println("Enter the type of Book");
+            System.out.println("1. Academic");
+            System.out.println("2. Other");
+            System.out.println("0.Exit");
+            response = sc.next();
+            res = response.charAt(0);
+            if (response.length() == 1 && (res == '1' || res == '2' || res == '0')) {
+                break;
+            } else {
+                System.out.println("Enter a valid input");
+            }
+        }
+        return res;
+
+    }
+
+
+    private static SubjectBook enterSubBookDetails() {
+        System.out.println("Enter book details:-");
+        System.out.println("Enter The Subject of the book");
+        String subName = sc.next();
+        System.out.println("Enter the name of the book");
+        String name = sc.next();
+        System.out.println("Enter the author of the book");
+        String author = sc.next();
+        System.out.println("Enter the Book Edition");
+        int Edition = sc.nextInt();
+        System.out.println("Enter the Book ID");
+        int bookId = sc.nextInt();
+        System.out.println("Enter the number of copies to be added");
+        int noOfCopies = sc.nextInt();
+        return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
+    }
+    private static OtherBooks enterOtherBookDetails() {
+        System.out.println("Enter book details:-");
+        System.out.println("Enter The Type of the book");
+        String type = sc.next();
+        System.out.println("Enter the Book Language");
+        String language = sc.next();
+        System.out.println("Enter the name of the book");
+        String name = sc.next();
+        System.out.println("Enter the author of the book");
+        String author = sc.next();
+        System.out.println("Enter the Book ID");
+        int bookId = sc.nextInt();
+        System.out.println("Enter the number of copies to be added");
+        int noOfCopies = sc.nextInt();
+        return new OtherBooks(name, author, noOfCopies, bookId, type, language);
+    }
+
+    private Book getBook() {
+        System.out.println("Enter The book ID to be issued");
+        int id = sc.nextInt();
+        for (int i = 0; i < stock.size; i++) {
+            if (id == stock.getData(i).getBookId()) {
+                return stock.getData(i);
+            } else {
+                System.out.println("Book Not Found");
+            }
+
+        }
+        return null;
     }
 
     private static MyList<String> getContacts() {
@@ -147,64 +204,6 @@ public class Library implements LibraryAdt {
             }
         }
         return contactNumbers;
-
-    }
-
-    @Override
-    public void returnBook() {
-    }
-
-
-    private static SubjectBook enterSubBookDetails() {
-        System.out.println("Enter book details:-");
-        System.out.println("Enter The Subject of the book");
-        String subName = sc.next();
-        System.out.println("Enter the name of the book");
-        String name = sc.next();
-        System.out.println("Enter the author of the book");
-        String author = sc.next();
-        System.out.println("Enter the Book Edition");
-        int Edition = sc.nextInt();
-        System.out.println("Enter the Book ID");
-        int bookId = sc.nextInt();
-        System.out.println("Enter the number of copies to be added");
-        int noOfCopies = sc.nextInt();
-        return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
-    }
-
-    private static OtherBooks enterOtherBookDetails() {
-        System.out.println("Enter book details:-");
-        System.out.println("Enter The Type of the book");
-        String type = sc.next();
-        System.out.println("Enter the Book Language");
-        String language = sc.next();
-        System.out.println("Enter the name of the book");
-        String name = sc.next();
-        System.out.println("Enter the author of the book");
-        String author = sc.next();
-        System.out.println("Enter the Book ID");
-        int bookId = sc.nextInt();
-        System.out.println("Enter the number of copies to be added");
-        int noOfCopies = sc.nextInt();
-        return new OtherBooks(name, author, noOfCopies, bookId, type, language);
-    }
-
-    private Book getBook() {
-        System.out.println("Enter The book ID to be issued");
-        int id = sc.nextInt();
-        for (int i = 0; i < stock.size; i++) {
-            if (id == stock.getData(i).getBookId()) {
-                return stock.getData(i);
-            } else {
-                System.out.println("Book Not Found");
-            }
-
-        }
-        return null;
-    }
-
-    @Override
-    public void addStudent() {
 
     }
 
