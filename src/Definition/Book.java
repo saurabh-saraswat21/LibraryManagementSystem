@@ -4,6 +4,12 @@ public class Book {
     private String author;
     private int noOfCopies;
     private int bookId;
+    int issuedTo;
+
+    public int getIssuedTo() {
+        return issuedTo;
+    }
+
     public String getName() {
         return name;
     }
@@ -45,6 +51,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return " Name:- " + this.getName() + " Author:- " + this.getAuthor() + " No of copies:- " + this.getNoOfCopies() + " BookID:- " + this.getBookId();
+        return " Name:- " + this.getName() + " Author:- " + this.getAuthor() + " No of copies:- " + this.getNoOfCopies() + " BookID:- " + this.getBookId() + " Issued to:- " + this.getIssuedTo();
     }
 }
