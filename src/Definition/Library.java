@@ -129,6 +129,19 @@ public class Library implements LibraryAdt {
         return null;
     }
 
+    private static Student getStudentDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter First Name of Student:-");
+        String firstName = sc.next();
+        System.out.println("Enter Last Name of Student:-");
+        String lastName = sc.next();
+        System.out.println("Enter Roll Number of Student:-");
+        int rollNo = sc.nextInt();
+        MyList<String> contactNumbers = getContactOfStudent();
+        return new Student(rollNo, firstName, lastName, contactNumbers);
+
+    }
+
     private static MyList<String> getContactOfStudent() {
         Scanner sc = new Scanner(System.in);
          /*
