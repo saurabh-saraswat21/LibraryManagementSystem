@@ -132,6 +132,16 @@ public class Library implements LibraryAdt {
         return null;
     }
 
+    private static Student getStudentDetails() {
+        String firstName = getFirstName();
+        String lastName = getLastName();
+        int rollNo = getRollNo();
+        MyList<String> contactNumbers = getContacts();
+
+        return new Student(rollNo, firstName, lastName, contactNumbers);
+
+    }
+
 
     /**
      * A helper method of getStudentDetails() method
