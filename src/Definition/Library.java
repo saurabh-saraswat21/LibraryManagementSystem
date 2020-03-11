@@ -19,8 +19,11 @@ public class Library implements LibraryAdt {
     }
 
     @Override
-    public void returnBook() {
+    public void addStudent() {
+
+
     }
+
 
     @Override
     public Book discardBook() {
@@ -57,8 +60,7 @@ public class Library implements LibraryAdt {
     }
 
     @Override
-    public void addStudent() {
-
+    public void returnBook() {
     }
 
     private static char selectBookType() {
@@ -98,6 +100,7 @@ public class Library implements LibraryAdt {
         int noOfCopies = sc.nextInt();
         return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
     }
+
     private static OtherBooks enterOtherBookDetails() {
         System.out.println("Enter book details:-");
         System.out.println("Enter The Type of the book");
@@ -128,7 +131,6 @@ public class Library implements LibraryAdt {
         }
         return null;
     }
-
     private static MyList<String> getContacts() {
 
         /*
@@ -206,5 +208,19 @@ public class Library implements LibraryAdt {
         return contactNumbers;
 
     }
+
+    /**
+     * A helper method of getStudentDetails() method
+     * use to input FirstName of the Student
+     *
+     * @return FirstName of the new Student
+     */
+    private static String getFirstName() {
+        System.out.println("Please Enter the name of the Person");
+        System.out.print("FirstName: ");
+        return sc.next();
+
+    }
+
 
 }
