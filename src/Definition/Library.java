@@ -7,23 +7,18 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Library implements LibraryAdt {
+    private static Scanner sc = new Scanner(System.in);
     public int totalBooks = 0;
     public int issuedBooks;
     public MyList<Book> stock = new MyList<>();
+    public MyList<Student> studentDatabase = new MyList<>();
 
     @Override
     public int issueBook() {
         return 0;
     }
 
-
-    @Override
-    public Book discardBook() {
-        return null;
-    }
-
     private static char selectBookType() {
-        Scanner sc = new Scanner(System.in);
         String response;
         char res;
         while (true) {
@@ -41,6 +36,11 @@ public class Library implements LibraryAdt {
         }
         return res;
 
+    }
+
+    @Override
+    public Book discardBook() {
+        return null;
     }
 
     @Override
@@ -72,79 +72,9 @@ public class Library implements LibraryAdt {
         return 0;
     }
 
+    private static MyList<String> getContacts() {
 
-    private static SubjectBook enterSubBookDetails() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter book details:-");
-        System.out.println("Enter The Subject of the book");
-        String subName = sc.next();
-        System.out.println("Enter the name of the book");
-        String name = sc.next();
-        System.out.println("Enter the author of the book");
-        String author = sc.next();
-        System.out.println("Enter the Book Edition");
-        int Edition = sc.nextInt();
-        System.out.println("Enter the Book ID");
-        int bookId = sc.nextInt();
-        System.out.println("Enter the number of copies to be added");
-        int noOfCopies = sc.nextInt();
-        return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
-    }
-
-    @Override
-    public void returnBook() {
-    }
-
-    private static OtherBooks enterOtherBookDetails() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter book details:-");
-        System.out.println("Enter The Type of the book");
-        String type = sc.next();
-        System.out.println("Enter the Book Language");
-        String language = sc.next();
-        System.out.println("Enter the name of the book");
-        String name = sc.next();
-        System.out.println("Enter the author of the book");
-        String author = sc.next();
-        System.out.println("Enter the Book ID");
-        int bookId = sc.nextInt();
-        System.out.println("Enter the number of copies to be added");
-        int noOfCopies = sc.nextInt();
-        sc.close();
-        return new OtherBooks(name, author, noOfCopies, bookId, type, language);
-    }
-
-    private Book getBook() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter The book ID to be issued");
-        int id = sc.nextInt();
-        for (int i = 0; i < stock.size; i++) {
-            if (id == stock.getData(i).getBookId()) {
-                return stock.getData(i);
-            } else {
-                System.out.println("Book Not Found");
-            }
-
-        }
-        return null;
-    }
-
-    private static Student getStudentDetails() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter First Name of Student:-");
-        String firstName = sc.next();
-        System.out.println("Enter Last Name of Student:-");
-        String lastName = sc.next();
-        System.out.println("Enter Roll Number of Student:-");
-        int rollNo = sc.nextInt();
-        MyList<String> contactNumbers = getContactOfStudent();
-        return new Student(rollNo, firstName, lastName, contactNumbers);
-
-    }
-
-    private static MyList<String> getContactOfStudent() {
-        Scanner sc = new Scanner(System.in);
-         /*
+        /*
         Declaration of a new list to store ContactNumbers of the new Contact
          */
         MyList<String> contactNumbers = new MyList<>();
@@ -218,6 +148,59 @@ public class Library implements LibraryAdt {
         }
         return contactNumbers;
 
+    }
+
+    @Override
+    public void returnBook() {
+    }
+
+
+    private static SubjectBook enterSubBookDetails() {
+        System.out.println("Enter book details:-");
+        System.out.println("Enter The Subject of the book");
+        String subName = sc.next();
+        System.out.println("Enter the name of the book");
+        String name = sc.next();
+        System.out.println("Enter the author of the book");
+        String author = sc.next();
+        System.out.println("Enter the Book Edition");
+        int Edition = sc.nextInt();
+        System.out.println("Enter the Book ID");
+        int bookId = sc.nextInt();
+        System.out.println("Enter the number of copies to be added");
+        int noOfCopies = sc.nextInt();
+        return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
+    }
+
+    private static OtherBooks enterOtherBookDetails() {
+        System.out.println("Enter book details:-");
+        System.out.println("Enter The Type of the book");
+        String type = sc.next();
+        System.out.println("Enter the Book Language");
+        String language = sc.next();
+        System.out.println("Enter the name of the book");
+        String name = sc.next();
+        System.out.println("Enter the author of the book");
+        String author = sc.next();
+        System.out.println("Enter the Book ID");
+        int bookId = sc.nextInt();
+        System.out.println("Enter the number of copies to be added");
+        int noOfCopies = sc.nextInt();
+        return new OtherBooks(name, author, noOfCopies, bookId, type, language);
+    }
+
+    private Book getBook() {
+        System.out.println("Enter The book ID to be issued");
+        int id = sc.nextInt();
+        for (int i = 0; i < stock.size; i++) {
+            if (id == stock.getData(i).getBookId()) {
+                return stock.getData(i);
+            } else {
+                System.out.println("Book Not Found");
+            }
+
+        }
+        return null;
     }
 
     @Override
