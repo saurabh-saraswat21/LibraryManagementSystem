@@ -25,4 +25,9 @@ public class OtherBooks extends Book {
     public void setBookType(String bookType) {
         this.bookType = bookType;
     }
+
+    @Override
+    public String toString() {
+        return "[Book Type -:" + this.getBookType() + super.toString() + " Language:- " + this.getLanguage() + "]\n";
+    }
 }
