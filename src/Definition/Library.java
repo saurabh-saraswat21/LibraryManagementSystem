@@ -10,13 +10,30 @@ public class Library implements LibraryAdt {
     public int issuedBooks;
     public MyList<Book> stock = new MyList<>();
 
-    @Override
-    public int issueBook(Book book, Student student) {
-        return 0;
+    private static char selectBookType() {
+        Scanner sc = new Scanner(System.in);
+        String response;
+        char res;
+        while (true) {
+            System.out.println("Enter the type of Book");
+            System.out.println("1. Academic");
+            System.out.println("2. Other");
+            System.out.println("0.Exit");
+            response = sc.next();
+            res = response.charAt(0);
+            if (response.length() == 1 && (res == '1' || res == '2' || res == '0')) {
+                break;
+            } else {
+                System.out.println("Enter a valid input");
+            }
+        }
+        return res;
+
     }
 
     @Override
-    public void returnBook(Student student, Book book) {
+    public int issueBook() {
+        return 0;
     }
 
 
@@ -72,25 +89,8 @@ public class Library implements LibraryAdt {
         return new SubjectBook(name, author, noOfCopies, bookId, subName, Edition);
     }
 
-    private static char selectBookType() {
-        Scanner sc = new Scanner(System.in);
-        String response;
-        char res;
-        while (true) {
-            System.out.println("Enter the type of Book");
-            System.out.println("1. Academic");
-            System.out.println("2. Other");
-            System.out.println("0.Exit");
-            response = sc.next();
-            res = response.charAt(0);
-            if (response.length() == 1 && res == '1' || res == '2' || res == '0') {
-                break;
-            } else {
-                System.out.println("Enter a valid input");
-            }
-        }
-        return res;
-
+    @Override
+    public void returnBook() {
     }
 
     private static OtherBooks enterOtherBookDetails() {
@@ -110,6 +110,21 @@ public class Library implements LibraryAdt {
         int noOfCopies = sc.nextInt();
         sc.close();
         return new OtherBooks(name, author, noOfCopies, bookId, type, language);
+    }
+
+    private Book getBook() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter The book ID to be issued");
+        int id = sc.nextInt();
+        for (int i = 0; i < stock.size; i++) {
+            if (id == stock.getData(i).getBookId()) {
+                return stock.getData(i);
+            } else {
+                System.out.println("Book Not Found");
+            }
+
+        }
+        return null;
     }
 
 }
