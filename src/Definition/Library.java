@@ -244,4 +244,34 @@ public class Library implements LibraryAdt {
 
     }
 
+    /**
+     * A helper method of getStudentDetails() method
+     * use to input roll number of the Student
+     *
+     * @return roll number of the new Student
+     */
+    private static int getRollNo() {
+        String rollNum;
+        int rollNo;
+        while (true) {
+            System.out.print("Roll Number: ");
+            rollNum = sc.next();
+             /*
+             If entered number is valid
+              */
+            if (Pattern.matches("[0-9]+", rollNum)) {
+                rollNo = Integer.parseInt(rollNum);
+                break;
+            }
+            /*
+            if entered roll number is not valid i.e, contains characters except digits
+
+             */
+            else {
+                System.out.println("Invalid RollNumber");
+            }
+        }
+        return rollNo;
+    }
+
 }
