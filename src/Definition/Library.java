@@ -20,6 +20,20 @@ public class Library implements LibraryAdt {
 
     @Override
     public void addStudent() {
+        int i;
+        String message;
+        System.out.println("How Many Students you want to add ?");
+        int student = sc.nextInt();
+        for (i = 0; i < student; i++) {
+            System.out.println("Enter " + (i + 1) + " Student Details:-");
+
+            studentDatabase.add(getStudentDetails());
+        }
+        if (i >= 1) {
+            message = i > 1 ? " Students Added SuccessFully" : " Student Added SuccessFully";
+            System.out.println((i) + message);
+        } else
+            System.out.println("Exited... No new Students Added");
 
 
     }
