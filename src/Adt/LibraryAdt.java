@@ -10,4 +10,6 @@ public interface LibraryAdt {
      int addBook();
 
      Book discardBook();
+
+     void addStudent();
 }
