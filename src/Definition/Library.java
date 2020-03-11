@@ -25,6 +25,35 @@ public class Library implements LibraryAdt {
         return null;
     }
 
+    @Override
+    public int addBook() {
+        while (true) {
+            try {
+                char type = selectBookType();
+                switch (type) {
+                    case '1':
+                        SubjectBook newBook = enterSubBookDetails();
+                        stock.add(newBook);
+                        totalBooks = totalBooks + newBook.getNoOfCopies();
+                        break;
+
+                    case '2':
+                        OtherBooks newBook1 = enterOtherBookDetails();
+                        stock.add(newBook1);
+                        totalBooks = totalBooks + newBook1.getNoOfCopies();
+                        break;
+                    case '0':
+                        break;
+
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Not Valid Input");
+            }
+        }
+        return 0;
+    }
+
     private static SubjectBook enterSubBookDetails() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter book details:-");
@@ -83,32 +112,4 @@ public class Library implements LibraryAdt {
         return new OtherBooks(name, author, noOfCopies, bookId, type, language);
     }
 
-    @Override
-    public int addBook() {
-        while (true) {
-            try {
-                char type = selectBookType();
-                switch (type) {
-                    case '1':
-                        SubjectBook newBook = enterSubBookDetails();
-                        stock.add(newBook);
-                        totalBooks = totalBooks + newBook.getNoOfCopies();
-                        break;
-
-                    case '2':
-                        OtherBooks newBook1 = enterOtherBookDetails();
-                        stock.add(newBook1);
-                        totalBooks = totalBooks + newBook1.getNoOfCopies();
-                        break;
-                    case '0':
-                        break;
-
-                }
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Not Valid Input");
-            }
-        }
-        return 0;
-    }
 }

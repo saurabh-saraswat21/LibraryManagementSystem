@@ -28,6 +28,6 @@ public class SubjectBook extends Book {
 
     @Override
     public String toString() {
-        return "[ Subject name :- " + this.getSubName() + " Edition :- " + this.getEdition() + super.toString() + "\n";
+        return "[ Subject name :- " + this.getSubName() + " Edition :- " + this.getEdition() + super.toString() + "]\n";
     }
 }
