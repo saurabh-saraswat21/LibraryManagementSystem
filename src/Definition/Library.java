@@ -2,6 +2,7 @@ package Definition;
 
 import Adt.LibraryAdt;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Library implements LibraryAdt {
@@ -18,25 +19,6 @@ public class Library implements LibraryAdt {
     public void returnBook(Student student, Book book) {
     }
 
-    private static OtherBooks enterOtherBookDetails() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter book details:-");
-        System.out.println("Enter The Type of the book");
-        String type = sc.next();
-        System.out.println("Enter the Book Language");
-        String language = sc.next();
-        System.out.println("Enter the name of the book");
-        String name = sc.next();
-        System.out.println("Enter the author of the book");
-        String author = sc.next();
-        System.out.println("Enter the Book ID");
-        int bookId = sc.nextInt();
-        System.out.println("Enter the number of copies to be added");
-        int noOfCopies = sc.nextInt();
-        sc.close();
-        return new OtherBooks(name, author, noOfCopies, bookId, type, language);
-
-    }
 
     @Override
     public Book discardBook() {
@@ -82,22 +64,50 @@ public class Library implements LibraryAdt {
 
     }
 
+    private static OtherBooks enterOtherBookDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter book details:-");
+        System.out.println("Enter The Type of the book");
+        String type = sc.next();
+        System.out.println("Enter the Book Language");
+        String language = sc.next();
+        System.out.println("Enter the name of the book");
+        String name = sc.next();
+        System.out.println("Enter the author of the book");
+        String author = sc.next();
+        System.out.println("Enter the Book ID");
+        int bookId = sc.nextInt();
+        System.out.println("Enter the number of copies to be added");
+        int noOfCopies = sc.nextInt();
+        sc.close();
+        return new OtherBooks(name, author, noOfCopies, bookId, type, language);
+    }
+
     @Override
     public int addBook() {
-        char type = selectBookType();
-        switch (type) {
-            case '1':
-                SubjectBook newBook = enterSubBookDetails();
-                stock.add(newBook);
-                totalBooks = totalBooks + newBook.getNoOfCopies();
+        while (true) {
+            try {
+                char type = selectBookType();
+                switch (type) {
+                    case '1':
+                        SubjectBook newBook = enterSubBookDetails();
+                        stock.add(newBook);
+                        totalBooks = totalBooks + newBook.getNoOfCopies();
+                        break;
+
+                    case '2':
+                        OtherBooks newBook1 = enterOtherBookDetails();
+                        stock.add(newBook1);
+                        totalBooks = totalBooks + newBook1.getNoOfCopies();
+                        break;
+                    case '0':
+                        break;
+
+                }
                 break;
-            case '2':
-                OtherBooks newBook1 = enterOtherBookDetails();
-                stock.add(newBook1);
-                totalBooks = totalBooks + newBook1.getNoOfCopies();
-                break;
-            case '0':
-                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Not Valid Input");
+            }
         }
         return 0;
     }
