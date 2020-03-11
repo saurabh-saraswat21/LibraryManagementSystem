@@ -222,5 +222,18 @@ public class Library implements LibraryAdt {
 
     }
 
+    /**
+     * A helper method of getStudentDetails() method
+     * use to input LastName of the Student
+     *
+     * @return LastName of the new Student
+     */
+
+    private static String getLastName() {
+        System.out.print("LastName: ");
+        return sc.next();
+
+    }
+
 
 }
