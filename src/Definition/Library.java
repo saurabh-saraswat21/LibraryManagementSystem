@@ -4,11 +4,23 @@ import Adt.LibraryAdt;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Library implements LibraryAdt {
     public int totalBooks = 0;
     public int issuedBooks;
     public MyList<Book> stock = new MyList<>();
+
+    @Override
+    public int issueBook() {
+        return 0;
+    }
+
+
+    @Override
+    public Book discardBook() {
+        return null;
+    }
 
     private static char selectBookType() {
         Scanner sc = new Scanner(System.in);
@@ -29,17 +41,6 @@ public class Library implements LibraryAdt {
         }
         return res;
 
-    }
-
-    @Override
-    public int issueBook() {
-        return 0;
-    }
-
-
-    @Override
-    public Book discardBook() {
-        return null;
     }
 
     @Override
@@ -70,6 +71,7 @@ public class Library implements LibraryAdt {
         }
         return 0;
     }
+
 
     private static SubjectBook enterSubBookDetails() {
         Scanner sc = new Scanner(System.in);
@@ -125,6 +127,89 @@ public class Library implements LibraryAdt {
 
         }
         return null;
+    }
+
+    private static MyList<String> getContactOfStudent() {
+        Scanner sc = new Scanner(System.in);
+         /*
+        Declaration of a new list to store ContactNumbers of the new Contact
+         */
+        MyList<String> contactNumbers = new MyList<>();
+        /*
+        A String Variable to store an individual Contact of the new Contact
+         */
+        String contactNo;
+        while (true) {
+            System.out.print("ContactNumber: ");
+            contactNo = sc.next();
+             /*
+             If entered number is valid add contactNo to the list
+              */
+            if (Pattern.matches("[0-9]+", contactNo)) {
+                contactNumbers.add(contactNo);
+                break;
+            }
+            /*
+            if entered number is not valid i.e, contains characters except digits
+
+             */
+            else {
+                System.out.println("Invalid PhoneNumber");
+            }
+        }
+        while (true) {
+            /*
+            Asking again for a contactNumber if user  want to add
+             */
+            System.out.print("Do You Want to add a new ContactNumber? (y/n) :");
+            String a = sc.next();
+            a = a.toLowerCase();
+            /*
+            Checking if the entered input is a single character or not
+            if not printing Invalid input message
+             */
+            char at = a.charAt(0);
+            if (a.length() > 1) {
+                System.out.println("Please Enter a Valid Input i.e., y for Yes or n for No");
+                continue;
+            }
+            /*
+            if entered input means yes allow to add a new contact and add that contact also to the list of ContactNumbers
+             */
+
+            if (at == 'y') {
+                System.out.print("ContactNumber: ");
+                contactNo = sc.next();
+                /*
+                checking a valid contact number
+                 */
+                if (Pattern.matches("[0-9]+", contactNo)) {
+
+                    contactNumbers.add(contactNo);
+                } else {
+                    System.out.println("Invalid PhoneNumber");
+                }
+            }
+            /*
+            if the entered input means no end the loop and return the contactNumbers list
+             */
+            else if (at == 'n') {
+                break;
+            }
+            /*
+            If there is some invalid input other than 'y' or 'n' then print Invalid input message
+             */
+            else {
+                System.out.println("Please Enter a Valid Input i.e., y for Yes or n for No");
+            }
+        }
+        return contactNumbers;
+
+    }
+
+    @Override
+    public void addStudent() {
+
     }
 
 }
