@@ -15,6 +15,13 @@ public class Student {
         this.phoneNumbers = phoneNumbers;
     }
 
+    public Student(int rollNo, String firstName, String lastName, MyList<String> phoneNumbers) {
+        this.rollNo = rollNo;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumbers = phoneNumbers;
+    }
+
     public int getRollNo() {
         return rollNo;
     }
