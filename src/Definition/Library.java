@@ -131,6 +131,41 @@ public class Library implements LibraryAdt {
         }
         return null;
     }
+
+
+    /**
+     * A helper method of getStudentDetails() method
+     * use to input FirstName of the Student
+     *
+     * @return FirstName of the new Student
+     */
+    private static String getFirstName() {
+        System.out.println("Please Enter the name of the Person");
+        System.out.print("FirstName: ");
+        return sc.next();
+
+    }
+
+    /**
+     * A helper method of getStudentDetails() method
+     * use to input LastName of the Student
+     *
+     * @return LastName of the new Student
+     */
+
+    private static String getLastName() {
+        System.out.print("LastName: ");
+        return sc.next();
+
+    }
+
+    /**
+     * A helper method of getStudentDetails() method
+     * use to input contactNumbers of the Student
+     * Ensures that there must be AtLeast 1 contact for every individual Student
+     *
+     * @return a list Containing ContactsNumbers of the new Student
+     */
     private static MyList<String> getContacts() {
 
         /*
@@ -208,32 +243,5 @@ public class Library implements LibraryAdt {
         return contactNumbers;
 
     }
-
-    /**
-     * A helper method of getStudentDetails() method
-     * use to input FirstName of the Student
-     *
-     * @return FirstName of the new Student
-     */
-    private static String getFirstName() {
-        System.out.println("Please Enter the name of the Person");
-        System.out.print("FirstName: ");
-        return sc.next();
-
-    }
-
-    /**
-     * A helper method of getStudentDetails() method
-     * use to input LastName of the Student
-     *
-     * @return LastName of the new Student
-     */
-
-    private static String getLastName() {
-        System.out.print("LastName: ");
-        return sc.next();
-
-    }
-
 
 }
