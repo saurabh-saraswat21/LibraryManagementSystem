@@ -308,14 +308,24 @@ public class Library implements LibraryAdt {
         return BookID;
     }
 
-    private boolean getAndMatchStudent() {
+    private Student getAndMatchStudent() {
         int roll = getRollNo();
         for (int i = 0; i < this.studentDatabase.size; i++) {
             int roll1 = studentDatabase.getData(i).getRollNo();
             if (roll == roll1)
-                return true;
+                return studentDatabase.getData(i);
         }
-        return false;
+        return null;
+    }
+
+    private Book getAndMatchBook() {
+        int bookId = getBookId();
+        for (int i = 0; i < this.stock.size; i++) {
+            int id = stock.getData(i).getBookId();
+            if (id == bookId)
+                return stock.getData(i);
+        }
+        return null;
     }
 
 
