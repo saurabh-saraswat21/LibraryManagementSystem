@@ -42,4 +42,9 @@ public class Student {
         return phoneNumbers;
     }
 
+    @Override
+    public String toString() {
+        return " Roll Number " + this.getRollNo() + " Name:- " + this.getFirstName() + " " + this.getLastName() +
+                " Phone Number:- " + this.getPhoneNumbers();
+    }
 }
