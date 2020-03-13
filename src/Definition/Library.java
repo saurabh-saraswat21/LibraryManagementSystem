@@ -284,6 +284,30 @@ public class Library implements LibraryAdt {
         return rollNo;
     }
 
+    private static int getBookId() {
+        String BookId;
+        int BookID;
+        while (true) {
+            System.out.print("Book ID: ");
+            BookId = sc.next();
+             /*
+             If entered ID is valid
+              */
+            if (Pattern.matches("[0-9]+", BookId)) {
+                BookID = Integer.parseInt(BookId);
+                break;
+            }
+            /*
+            if entered ID is not valid i.e, contains characters except digits
+
+             */
+            else {
+                System.out.println("Invalid BookID Try Again");
+            }
+        }
+        return BookID;
+    }
+
     private boolean getAndMatchStudent() {
         int roll = getRollNo();
         for (int i = 0; i < this.studentDatabase.size; i++) {
