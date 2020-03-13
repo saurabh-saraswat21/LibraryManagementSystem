@@ -298,5 +298,15 @@ public class Library implements LibraryAdt {
         return rollNo;
     }
 
+    private boolean getAndMatchStudent() {
+        int roll = getRollNo();
+        for (int i = 0; i < this.studentDatabase.size; i++) {
+            int roll1 = studentDatabase.getData(i).getRollNo();
+            if (roll == roll1)
+                return true;
+        }
+        return false;
+    }
+
 
 }
