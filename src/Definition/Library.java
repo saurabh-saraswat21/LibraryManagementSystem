@@ -15,6 +15,21 @@ public class Library implements LibraryAdt {
 
     @Override
     public int issueBook() {
+        Student student = getAndMatchStudent();
+        if (student == null) {
+            System.out.println("Sorry that student is not found in the database kindly add the Student first");
+            return 0;
+        } else {
+            System.out.println("Welcome, " + student.getFirstName());
+        }
+        Book book = getAndMatchBook();
+        if (book == null) {
+            System.out.println("Sorry, Book Not found");
+            return 0;
+        } else {
+            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
+        }
+
         return 0;
     }
 

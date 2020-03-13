@@ -8,8 +8,6 @@ public class Main {
         //lib.addBook();
         lib.addBook();
         lib.addStudent();
-        System.out.println(lib.stock);
-        System.out.println(lib.studentDatabase);
-
+        lib.issueBook();
     }
 }
