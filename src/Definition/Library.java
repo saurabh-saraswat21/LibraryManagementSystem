@@ -132,20 +132,6 @@ public class Library implements LibraryAdt {
         return new OtherBooks(name, author, noOfCopies, bookId, type, language);
     }
 
-    private Book getBook() {
-        System.out.println("Enter The book ID to be issued");
-        int id = sc.nextInt();
-        for (int i = 0; i < stock.size; i++) {
-            if (id == stock.getData(i).getBookId()) {
-                return stock.getData(i);
-            } else {
-                System.out.println("Book Not Found");
-            }
-
-        }
-        return null;
-    }
-
     private static Student getNewStudentDetails() {
         String firstName = getFirstName();
         String lastName = getLastName();
