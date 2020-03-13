@@ -27,7 +27,7 @@ public class Library implements LibraryAdt {
         for (i = 0; i < student; i++) {
             System.out.println("Enter " + (i + 1) + " Student Details:-");
 
-            studentDatabase.add(getStudentDetails());
+            studentDatabase.add(getNewStudentDetails());
         }
         if (i >= 1) {
             message = i > 1 ? " Students Added SuccessFully" : " Student Added SuccessFully";
@@ -146,7 +146,7 @@ public class Library implements LibraryAdt {
         return null;
     }
 
-    private static Student getStudentDetails() {
+    private static Student getNewStudentDetails() {
         String firstName = getFirstName();
         String lastName = getLastName();
         int rollNo = getRollNo();
@@ -158,7 +158,7 @@ public class Library implements LibraryAdt {
 
 
     /**
-     * A helper method of getStudentDetails() method
+     * A helper method of getNewStudentDetails() method
      * use to input FirstName of the Student
      *
      * @return FirstName of the new Student
@@ -171,7 +171,7 @@ public class Library implements LibraryAdt {
     }
 
     /**
-     * A helper method of getStudentDetails() method
+     * A helper method of getNewStudentDetails() method
      * use to input LastName of the Student
      *
      * @return LastName of the new Student
@@ -184,7 +184,7 @@ public class Library implements LibraryAdt {
     }
 
     /**
-     * A helper method of getStudentDetails() method
+     * A helper method of getNewStudentDetails() method
      * use to input contactNumbers of the Student
      * Ensures that there must be AtLeast 1 contact for every individual Student
      *
@@ -269,7 +269,7 @@ public class Library implements LibraryAdt {
     }
 
     /**
-     * A helper method of getStudentDetails() method
+     * A helper method of getNewStudentDetails() method
      * use to input roll number of the Student
      *
      * @return roll number of the new Student
@@ -297,5 +297,6 @@ public class Library implements LibraryAdt {
         }
         return rollNo;
     }
+
 
 }
