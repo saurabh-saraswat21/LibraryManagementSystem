@@ -239,7 +239,7 @@ public class MyList<E> implements MyListAdt<E> {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.size; i++) {
             E response = this.getData(i);
-            sb.append(response.toString() + " ");
+            sb.append(response.toString()).append(" ");
         }
         return sb.toString();
     }
