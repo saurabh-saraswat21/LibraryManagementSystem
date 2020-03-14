@@ -4,8 +4,8 @@ public class Book {
     private String author;
     private int noOfCopies;
     private int bookId;
-    int issuedTo;
-    int issuedCopies;
+    public MyList<Integer> issuedTo = new MyList<>();
+    public int issuedCopies;
 
     public Book(String name, String author, int noOfCopies, int bookId) {
         this.name = name;
@@ -14,8 +14,9 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public int getIssuedTo() {
+    public MyList<Integer> getIssuedTo() {
         return issuedTo;
+
     }
 
     public String getName() {
@@ -40,6 +41,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return " Book Name:- " + this.getName() + " Author:- " + this.getAuthor() + " No of copies:- " + this.getNoOfCopies() + " BookID:- " + this.getBookId() + " Issued to:- " + this.getIssuedTo();
+        return " BookID:- " + this.getBookId() + " Book Name:- " + this.getName() + " Author:- " + this.getAuthor() + " No of copies:- " + this.getNoOfCopies() +
+                " Issued to:- " + this.getIssuedCopies();
     }
 }
