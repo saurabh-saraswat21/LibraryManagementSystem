@@ -19,7 +19,7 @@ public class Library implements LibraryAdt {
             char input = s.charAt(0);
             if (s.length() == 1) {
                 if (input == '0' || input == '1' || input == '2' || input == '3' || input == '4' || input == '5' || input == '6' || input == '7' || input == '8' || input == '9') {
-                    return (int) input;
+                    return (int) input - 48;
                 } else {
                     System.out.println("Enter Valid Input");
                 }
@@ -39,7 +39,6 @@ public class Library implements LibraryAdt {
             System.out.println("2. Other");
             System.out.println("0.Exit");
             res = takeOneDigitIntInput();
-            res = res - 48;
             if (res == 1 || res == 2 || res == 0) {
                 break;
             } else {
@@ -273,14 +272,13 @@ public class Library implements LibraryAdt {
             return 0;
         } else {
             System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
-            String s = sc.next();
-            char choice = s.charAt(0);
-            if (s.length() == 1 && (choice == '1' || choice == '0')) {
+            int res = takeOneDigitIntInput();
+            if (res == 1) {
                 student.getBooks().add(book);
                 issuedBooks++;
-                System.out.println(issuedBooks);
-                System.out.println(student);
                 System.out.println("Book issued Successfully");
+            } else if (res == 0) {
+                System.out.println("No Books Issued");
             } else {
                 System.out.println("Invalid Input !");
             }
