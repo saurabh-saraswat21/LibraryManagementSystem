@@ -40,10 +40,16 @@ public class Student {
 
     public String getIssuedBooksId() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < books.size; i++) {
-            sb.append(books.getData(i).getBookId()).append(",");
+        if (books.size != 0) {
+            for (int i = 0; i < books.size; i++) {
+                if (i < books.size - 1)
+                    sb.append(books.getData(i).getBookId()).append(",");
+                else sb.append(books.getData(i).getBookId());
+            }
+            return sb.toString();
+        } else {
+            return "No Books Issued";
         }
-        return sb.toString();
     }
 
     public MyList<String> getPhoneNumbers() {
@@ -53,6 +59,6 @@ public class Student {
     @Override
     public String toString() {
         return " Roll Number " + this.getRollNo() + " Name:- " + this.getFirstName() + " " + this.getLastName() +
-                " Phone Number:- " + this.getPhoneNumbers();
+                " Phone Number:- " + this.getPhoneNumbers() + "Issued Books :-" + getIssuedBooksId();
     }
 }

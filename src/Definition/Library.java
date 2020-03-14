@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class Library implements LibraryAdt {
     private static Scanner sc = new Scanner(System.in);
     public int totalBooks = 0;
-    public int issuedBooks;
+    public int issuedBooks = 0;
     public MyList<Book> stock = new MyList<>();
     public MyList<Student> studentDatabase = new MyList<>();
 
