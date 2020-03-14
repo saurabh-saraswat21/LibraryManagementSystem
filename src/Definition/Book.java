@@ -5,6 +5,7 @@ public class Book {
     private int noOfCopies;
     private int bookId;
     int issuedTo;
+    int issuedCopies;
 
     public Book(String name, String author, int noOfCopies, int bookId) {
         this.name = name;
@@ -24,13 +25,19 @@ public class Book {
     public String getAuthor() {
         return author;
     }
+
     public int getNoOfCopies() {
         return noOfCopies;
+    }
+
+    public int getIssuedCopies() {
+        return issuedCopies;
     }
 
     public int getBookId() {
         return bookId;
     }
+
     @Override
     public String toString() {
         return " Book Name:- " + this.getName() + " Author:- " + this.getAuthor() + " No of copies:- " + this.getNoOfCopies() + " BookID:- " + this.getBookId() + " Issued to:- " + this.getIssuedTo();
