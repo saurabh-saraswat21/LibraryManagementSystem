@@ -274,9 +274,16 @@ public class Library implements LibraryAdt {
             System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
             int res = takeOneDigitIntInput();
             if (res == 1) {
-                student.getBooks().add(book);
-                issuedBooks++;
-                System.out.println("Book issued Successfully");
+                if (book.getIssuedCopies() < book.getNoOfCopies()) {
+                    student.getBooks().add(book);
+                    issuedBooks++;
+                    book.issuedCopies++;
+                    book.issuedTo.add(student.getRollNo());
+                    System.out.println("Book issued Successfully");
+                } else {
+                    System.out.println("Sorry The Book is currently Out of Stock ! come back later");
+                }
+
             } else if (res == 0) {
                 System.out.println("No Books Issued");
             } else {
