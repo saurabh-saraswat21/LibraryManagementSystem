@@ -14,17 +14,10 @@ public class SubjectBook extends Book {
         return SubName;
     }
 
-    public void setSubName(String subName) {
-        SubName = subName;
-    }
-
     public int getEdition() {
         return Edition;
     }
 
-    public void setEdition(int Edition) {
-        this.Edition = Edition;
-    }
 
     @Override
     public String toString() {

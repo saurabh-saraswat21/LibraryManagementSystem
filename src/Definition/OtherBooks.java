@@ -14,16 +14,8 @@ public class OtherBooks extends Book {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     public String getBookType() {
         return bookType;
-    }
-
-    public void setBookType(String bookType) {
-        this.bookType = bookType;
     }
 
     @Override
