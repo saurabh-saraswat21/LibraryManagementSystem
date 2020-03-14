@@ -7,7 +7,8 @@ public class Main {
         Library lib = new Library();
         //lib.addBook();
         //lib.addBook();
-        lib.addStudent();
-        lib.issueBook();
+        //lib.addStudent();
+        //lib.issueBook();
+
     }
 }

@@ -103,6 +103,25 @@ public class Library implements LibraryAdt {
     public void returnBook() {
     }
 
+    private static int takeOneDigitIntInput() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            String s = sc.next();
+            char input = s.charAt(0);
+            if (s.length() == 1) {
+                if (input == '0' || input == '1' || input == '2' || input == '3' || input == '4' || input == '5' || input == '6' || input == '7' || input == '8' || input == '9') {
+                    sc.close();
+                    return input;
+                } else {
+                    System.out.println("Enter Valid Input");
+                }
+            } else {
+                System.out.println("Enter Valid Input");
+            }
+
+        }
+    }
+
     private static char selectBookType() {
         String response;
         char res;
