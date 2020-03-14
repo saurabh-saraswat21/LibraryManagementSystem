@@ -28,6 +28,17 @@ public class Library implements LibraryAdt {
             return 0;
         } else {
             System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
+            String s = sc.next();
+            char choice = s.charAt(0);
+            if (s.length() == 1 && (choice == '1' || choice == '0')) {
+                student.getBooks().add(book);
+                issuedBooks++;
+                System.out.println(issuedBooks);
+                System.out.println(student);
+                System.out.println("Book issued Successfully");
+            } else {
+                System.out.println("Invalid Input !");
+            }
         }
 
         return 0;
