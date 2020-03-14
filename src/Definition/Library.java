@@ -13,105 +13,13 @@ public class Library implements LibraryAdt {
     public MyList<Book> stock = new MyList<>();
     public MyList<Student> studentDatabase = new MyList<>();
 
-    @Override
-    public int issueBook() {
-        Student student = getAndMatchStudent();
-        if (student == null) {
-            System.out.println("Sorry that student is not found in the database kindly add the Student first");
-            return 0;
-        } else {
-            System.out.println("Welcome, " + student.getFirstName());
-        }
-        Book book = getAndMatchBook();
-        if (book == null) {
-            System.out.println("Sorry, Book Not found");
-            return 0;
-        } else {
-            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
-            String s = sc.next();
-            char choice = s.charAt(0);
-            if (s.length() == 1 && (choice == '1' || choice == '0')) {
-                student.getBooks().add(book);
-                issuedBooks++;
-                System.out.println(issuedBooks);
-                System.out.println(student);
-                System.out.println("Book issued Successfully");
-            } else {
-                System.out.println("Invalid Input !");
-            }
-        }
-
-        return 0;
-    }
-
-    @Override
-    public void addStudent() {
-        int i;
-        String message;
-        System.out.println("How Many Students you want to add ?");
-        int student = sc.nextInt();
-        for (i = 0; i < student; i++) {
-            System.out.println("Enter " + (i + 1) + " Student Details:-");
-
-            studentDatabase.add(getNewStudentDetails());
-        }
-        if (i >= 1) {
-            message = i > 1 ? " Students Added SuccessFully" : " Student Added SuccessFully";
-            System.out.println((i) + message);
-        } else
-            System.out.println("Exited... No new Students Added");
-
-
-    }
-
-
-    @Override
-    public Book discardBook() {
-        return null;
-    }
-
-    @Override
-    public int addBook() {
-        while (true) {
-            try {
-                char type = selectBookType();
-                switch (type) {
-                    case '1':
-                        SubjectBook newBook = enterSubBookDetails();
-                        stock.add(newBook);
-                        totalBooks = totalBooks + newBook.getNoOfCopies();
-                        break;
-
-                    case '2':
-                        OtherBooks newBook1 = enterOtherBookDetails();
-                        stock.add(newBook1);
-                        totalBooks = totalBooks + newBook1.getNoOfCopies();
-                        break;
-                    case '0':
-                        break;
-
-                }
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Not Valid Input");
-            }
-        }
-        return 0;
-    }
-
-    @Override
-    public void returnBook() {
-    }
-
-    private static int takeOneDigitIntInput() {
-        Scanner sc = new Scanner(System.in);
+    private static Integer takeOneDigitIntInput() {
         while (true) {
             String s = sc.next();
             char input = s.charAt(0);
             if (s.length() == 1) {
                 if (input == '0' || input == '1' || input == '2' || input == '3' || input == '4' || input == '5' || input == '6' || input == '7' || input == '8' || input == '9') {
-                    sc.close();
-                    return input;
+                    return (int) input;
                 } else {
                     System.out.println("Enter Valid Input");
                 }
@@ -122,26 +30,24 @@ public class Library implements LibraryAdt {
         }
     }
 
-    private static char selectBookType() {
-        String response;
-        char res;
+    private static int selectBookType() {
+        int res;
+
         while (true) {
             System.out.println("Enter the type of Book");
             System.out.println("1. Academic");
             System.out.println("2. Other");
             System.out.println("0.Exit");
-            response = sc.next();
-            res = response.charAt(0);
-            if (response.length() == 1 && (res == '1' || res == '2' || res == '0')) {
+            res = takeOneDigitIntInput();
+            res = res - 48;
+            if (res == 1 || res == 2 || res == 0) {
                 break;
             } else {
-                System.out.println("Enter a valid input");
+                System.out.println("Enter a Valid Input");
             }
         }
         return res;
-
     }
-
 
     private static SubjectBook enterSubBookDetails() {
         System.out.println("Enter book details:-");
@@ -186,7 +92,6 @@ public class Library implements LibraryAdt {
         return new Student(rollNo, firstName, lastName, contactNumbers);
 
     }
-
 
     /**
      * A helper method of getNewStudentDetails() method
@@ -351,6 +256,94 @@ public class Library implements LibraryAdt {
             }
         }
         return BookID;
+    }
+
+    @Override
+    public int issueBook() {
+        Student student = getAndMatchStudent();
+        if (student == null) {
+            System.out.println("Sorry that student is not found in the database kindly add the Student first");
+            return 0;
+        } else {
+            System.out.println("Welcome, " + student.getFirstName());
+        }
+        Book book = getAndMatchBook();
+        if (book == null) {
+            System.out.println("Sorry, Book Not found");
+            return 0;
+        } else {
+            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
+            String s = sc.next();
+            char choice = s.charAt(0);
+            if (s.length() == 1 && (choice == '1' || choice == '0')) {
+                student.getBooks().add(book);
+                issuedBooks++;
+                System.out.println(issuedBooks);
+                System.out.println(student);
+                System.out.println("Book issued Successfully");
+            } else {
+                System.out.println("Invalid Input !");
+            }
+        }
+
+        return 0;
+    }
+
+    @Override
+    public void addStudent() {
+        int i;
+        String message;
+        System.out.println("How Many Students you want to add ?");
+        int student = sc.nextInt();
+        for (i = 0; i < student; i++) {
+            System.out.println("Enter " + (i + 1) + " Student Details:-");
+
+            studentDatabase.add(getNewStudentDetails());
+        }
+        if (i >= 1) {
+            message = i > 1 ? " Students Added SuccessFully" : " Student Added SuccessFully";
+            System.out.println((i) + message);
+        } else
+            System.out.println("Exited... No new Students Added");
+
+
+    }
+
+    @Override
+    public Book discardBook() {
+        return null;
+    }
+
+    @Override
+    public int addBook() {
+        while (true) {
+            try {
+                int type = selectBookType();
+                switch (type) {
+                    case 1:
+                        SubjectBook newBook = enterSubBookDetails();
+                        stock.add(newBook);
+                        totalBooks = totalBooks + newBook.getNoOfCopies();
+                        break;
+                    case 2:
+                        OtherBooks newBook1 = enterOtherBookDetails();
+                        stock.add(newBook1);
+                        totalBooks = totalBooks + newBook1.getNoOfCopies();
+                        break;
+                    case 0:
+                        break;
+
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Not Valid Input");
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public void returnBook() {
     }
 
     private Student getAndMatchStudent() {
