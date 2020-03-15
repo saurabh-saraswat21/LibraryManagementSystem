@@ -24,6 +24,14 @@ public interface MyListAdt<E> {
      */
     void remove(int index);
 
+    /**
+     * This
+     *
+     * @param item
+     * @return index of the item if found otherwise -1
+     */
+    int searchItem(E item);
+
 
     /**
      * This method will Get the data of the the node present at the passed Index
