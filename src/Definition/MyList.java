@@ -222,7 +222,28 @@ public class MyList<E> implements MyListAdt<E> {
 
     @Override
     public int searchItem(E item) {
-        return 0;
+        /*
+        A loop to traverse whole list
+         */
+        for (int i = 0; i < this.size; i++) {
+            /*
+            Getting the data at every Node
+             */
+            E data = this.getData(i);
+            /*
+            Comparing data
+             */
+            if (data == item) {
+                /*
+                returning index
+                 */
+                return i;
+            }
+        }
+        /*
+        If data not found returning -1
+         */
+        return -1;
     }
 
     /**
