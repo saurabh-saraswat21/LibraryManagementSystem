@@ -371,5 +371,8 @@ public class Library implements LibraryAdt {
         return null;
     }
 
+    private static boolean checkAvailability(Book book) {
+        return book.getIssuedCopies() < book.getNoOfCopies();
+    }
 
 }
