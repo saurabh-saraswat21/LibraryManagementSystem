@@ -33,5 +33,12 @@ public interface MyListAdt<E> {
      */
     E getData(int index);
 
+    /**
+     * This method will search and remove the item from the list
+     *
+     * @param item the item to be removed
+     */
+    void removeItem(E item);
+
 
 }
