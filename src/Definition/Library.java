@@ -315,6 +315,25 @@ public class Library implements LibraryAdt {
 
     @Override
     public Book discardBook() {
+        Book book = getAndMatchBook();
+        if (book == null) {
+            System.out.println("No Book With this ID found");
+        } else {
+            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
+            int res = takeOneDigitIntInput();
+            if (res == 1) {
+                System.out.println(book.getNoOfCopies());
+                book.setNoOfCopies((book.getNoOfCopies() - 1));
+                System.out.println("Removed 1 copy of " + book.getName());
+                System.out.println(book.getNoOfCopies());
+                return null;
+            } else if (res == 0) {
+                System.out.println("Exited.");
+                return null;
+            }
+
+        }
+
         return null;
     }
 
