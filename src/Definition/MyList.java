@@ -220,6 +220,11 @@ public class MyList<E> implements MyListAdt<E> {
 
     }
 
+    @Override
+    public int searchItem(E item) {
+        return 0;
+    }
+
     /**
      * This method will return data of the node at a particular index
      *
@@ -232,6 +237,11 @@ public class MyList<E> implements MyListAdt<E> {
           call the getNode() method and get the data of that node by getData() method
          */
         return getNode(index).getData();
+    }
+
+    @Override
+    public void removeItem(E item) {
+
     }
 
     @Override
