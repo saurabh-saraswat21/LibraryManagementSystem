@@ -2,6 +2,11 @@ package Definition;
 public class Book {
     private String name;
     private String author;
+
+    public void setNoOfCopies(int noOfCopies) {
+        this.noOfCopies = noOfCopies;
+    }
+
     private int noOfCopies;
     private int bookId;
     private MyList<Integer> issuedTo = new MyList<>();
