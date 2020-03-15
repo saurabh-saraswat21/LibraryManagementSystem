@@ -274,7 +274,7 @@ public class Library implements LibraryAdt {
             System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
             int res = takeOneDigitIntInput();
             if (res == 1) {
-                if (book.getIssuedCopies() < book.getNoOfCopies()) {
+                if (checkAvailability(book)) {
                     student.getBooks().add(book);
                     issuedBooks++;
                     book.issuedCopies++;
@@ -373,6 +373,11 @@ public class Library implements LibraryAdt {
 
     private static boolean checkAvailability(Book book) {
         return book.getIssuedCopies() < book.getNoOfCopies();
+    }
+
+    private static boolean updateStudent(Student student, Book book) {
+        student.setBooks(book);
+        return true;
     }
 
 }
