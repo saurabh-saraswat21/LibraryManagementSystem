@@ -375,9 +375,12 @@ public class Library implements LibraryAdt {
         return book.getIssuedCopies() < book.getNoOfCopies();
     }
 
-    private static boolean updateStudent(Student student, Book book) {
+    private static void updateStudent(Student student, Book book) {
         student.setBooks(book);
-        return true;
+    }
+
+    private static void updateBook(Book book, Student student) {
+        book.setIssuedTo(student.getRollNo());
     }
 
 }
