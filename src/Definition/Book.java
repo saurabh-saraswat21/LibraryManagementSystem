@@ -4,8 +4,8 @@ public class Book {
     private String author;
     private int noOfCopies;
     private int bookId;
-    public MyList<Integer> issuedTo = new MyList<>();
-    public int issuedCopies;
+    private MyList<Integer> issuedTo = new MyList<>();
+
 
     public Book(String name, String author, int noOfCopies, int bookId) {
         this.name = name;
@@ -17,6 +17,10 @@ public class Book {
     public MyList<Integer> getIssuedTo() {
         return issuedTo;
 
+    }
+
+    public void setIssuedTo(int issuedTo) {
+        this.issuedTo.add(issuedTo);
     }
 
     public String getName() {
@@ -32,7 +36,7 @@ public class Book {
     }
 
     public int getIssuedCopies() {
-        return issuedCopies;
+        return issuedTo.size;
     }
 
     public int getBookId() {
