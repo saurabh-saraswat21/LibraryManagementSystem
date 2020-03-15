@@ -45,8 +45,9 @@ public interface MyListAdt<E> {
      * This method will search and remove the item from the list
      *
      * @param item the item to be removed
+     * @return status that if data is removed or not
      */
-    void removeItem(E item);
+    boolean removeItem(E item);
 
 
 }

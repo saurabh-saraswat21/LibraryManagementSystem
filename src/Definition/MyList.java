@@ -261,8 +261,13 @@ public class MyList<E> implements MyListAdt<E> {
     }
 
     @Override
-    public void removeItem(E item) {
-
+    public boolean removeItem(E item) {
+        int index = searchItem(item);
+        if (index != -1) {
+            remove(index);
+            return true;
+        }
+        return false;
     }
 
     @Override
