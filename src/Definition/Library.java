@@ -275,10 +275,9 @@ public class Library implements LibraryAdt {
             int res = takeOneDigitIntInput();
             if (res == 1) {
                 if (checkAvailability(book)) {
-                    student.getBooks().add(book);
+                    updateStudent(student, book);
+                    updateBook(book, student);
                     issuedBooks++;
-                    book.issuedCopies++;
-                    book.issuedTo.add(student.getRollNo());
                     System.out.println("Book issued Successfully");
                 } else {
                     System.out.println("Sorry The Book is currently Out of Stock ! come back later");
@@ -352,6 +351,7 @@ public class Library implements LibraryAdt {
     }
 
     private Student getAndMatchStudent() {
+        System.out.println("Enter Student Roll No");
         int roll = getRollNo();
         for (int i = 0; i < this.studentDatabase.size; i++) {
             int roll1 = studentDatabase.getData(i).getRollNo();
@@ -362,6 +362,7 @@ public class Library implements LibraryAdt {
     }
 
     private Book getAndMatchBook() {
+        System.out.println("Enter Book ID");
         int bookId = getBookId();
         for (int i = 0; i < this.stock.size; i++) {
             int id = stock.getData(i).getBookId();
