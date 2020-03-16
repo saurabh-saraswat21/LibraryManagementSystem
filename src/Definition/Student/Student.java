@@ -10,18 +10,6 @@ public class Student {
     private MyList<Book> books = new MyList<>();
     private MyList<String> phoneNumbers = new MyList<>();
 
-    public void setBooks(Book book) {
-        this.books.add(book);
-    }
-
-    public Student(int rollNo, String firstName, String lastName, MyList<Book> books, MyList<String> phoneNumbers) {
-        this.rollNo = rollNo;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.books = books;
-        this.phoneNumbers = phoneNumbers;
-    }
-
     public Student(int rollNo, String firstName, String lastName, MyList<String> phoneNumbers) {
         this.rollNo = rollNo;
         this.firstName = firstName;
@@ -43,6 +31,10 @@ public class Student {
 
     public MyList<Book> getBooks() {
         return books;
+    }
+
+    public void setBooks(Book book) {
+        this.books.add(book);
     }
 
     public String getIssuedBooksId() {

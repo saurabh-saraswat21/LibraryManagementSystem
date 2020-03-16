@@ -128,6 +128,19 @@ public class Library implements LibraryAdt {
 
     @Override
     public void returnBook() {
+        Student student = getAndMatchStudent();
+        if (student != null) {
+            Book book = getAndMatchBook();
+            if (book != null) {
+                if (student.getBooks().searchItem(book) != -1) {
+                    student.getBooks().removeItem(book);
+                    book.getIssuedTo().removeItem(student.getRollNo());
+                    issuedBooks--;
+                } else {
+                    System.out.println("This book is not issued to the Student");
+                }
+            }
+        }
     }
 
     private static Integer takeOneDigitIntInput() {
@@ -382,6 +395,7 @@ public class Library implements LibraryAdt {
             if (roll == roll1)
                 return studentDatabase.getData(i);
         }
+        System.out.println("Student Not Found");
         return null;
     }
 
@@ -393,6 +407,7 @@ public class Library implements LibraryAdt {
             if (id == bookId)
                 return stock.getData(i);
         }
+        System.out.println("No book with this ID found");
         return null;
     }
 
