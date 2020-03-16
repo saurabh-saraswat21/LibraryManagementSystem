@@ -1,4 +1,4 @@
-package Definition;
+package Definition.Book;
 
 public class SubjectBook extends Book {
     private String SubName;

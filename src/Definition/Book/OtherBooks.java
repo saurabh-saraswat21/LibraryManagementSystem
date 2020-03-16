@@ -1,4 +1,4 @@
-package Definition;
+package Definition.Book;
 
 public class OtherBooks extends Book {
     private String bookType;

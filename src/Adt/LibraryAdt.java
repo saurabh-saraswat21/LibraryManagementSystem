@@ -1,6 +1,6 @@
 package Adt;
 
-import Definition.Book;
+import Definition.Book.Book;
 
 public interface LibraryAdt {
      int issueBook();

@@ -1,4 +1,7 @@
-package Definition;
+package Definition.Student;
+
+import Definition.Book.Book;
+import Definition.MyList.MyList;
 
 public class Student {
     private int rollNo;

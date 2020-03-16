@@ -1,4 +1,4 @@
-package Definition;
+package Definition.MyList;
 
 import Adt.MyListAdt;
 

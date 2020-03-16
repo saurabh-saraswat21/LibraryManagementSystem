@@ -1,4 +1,7 @@
-package Definition;
+package Definition.Book;
+
+import Definition.MyList.MyList;
+
 public class Book {
     private String name;
     private String author;

@@ -1,6 +1,11 @@
-package Definition;
+package Definition.MyLibrary;
 
 import Adt.LibraryAdt;
+import Definition.Book.Book;
+import Definition.Book.OtherBooks;
+import Definition.Book.SubjectBook;
+import Definition.MyList.MyList;
+import Definition.Student.Student;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -12,6 +17,118 @@ public class Library implements LibraryAdt {
     public int issuedBooks = 0;
     public MyList<Book> stock = new MyList<>();
     public MyList<Student> studentDatabase = new MyList<>();
+
+    @Override
+    public void addStudent() {
+        int i;
+        String message;
+        System.out.println("How Many Students you want to add ?");
+        int student = sc.nextInt();
+        for (i = 0; i < student; i++) {
+            System.out.println("Enter " + (i + 1) + " Student Details:-");
+
+            studentDatabase.add(getNewStudentDetails());
+        }
+        if (i >= 1) {
+            message = i > 1 ? " Students Added SuccessFully" : " Student Added SuccessFully";
+            System.out.println((i) + message);
+        } else
+            System.out.println("Exited... No new Students Added");
+
+
+    }
+
+    @Override
+    public int issueBook() {
+        Student student = getAndMatchStudent();
+        if (student == null) {
+            System.out.println("Sorry that student is not found in the database kindly add the Student first");
+            return 0;
+        } else {
+            System.out.println("Welcome, " + student.getFirstName());
+        }
+        Book book = getAndMatchBook();
+        if (book == null) {
+            System.out.println("Sorry, Book Not found");
+            return 0;
+        } else {
+            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
+            int res = takeOneDigitIntInput();
+            if (res == 1) {
+                if (checkAvailability(book)) {
+                    updateStudent(student, book);
+                    updateBook(book, student);
+                    issuedBooks++;
+                    System.out.println("Book issued Successfully");
+                } else {
+                    System.out.println("Sorry The Book is currently Out of Stock ! come back later");
+                }
+
+            } else if (res == 0) {
+                System.out.println("No Books Issued");
+            } else {
+                System.out.println("Invalid Input !");
+            }
+        }
+
+        return 0;
+    }
+
+    @Override
+    public Book discardBook() {
+        Book book = getAndMatchBook();
+        if (book == null) {
+            System.out.println("No Book With this ID found");
+        } else {
+            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
+            int res = takeOneDigitIntInput();
+            if (res == 1) {
+                System.out.println(book.getNoOfCopies());
+                book.setNoOfCopies((book.getNoOfCopies() - 1));
+                System.out.println("Removed 1 copy of " + book.getName());
+                System.out.println(book.getNoOfCopies());
+                return null;
+            } else if (res == 0) {
+                System.out.println("Exited.");
+                return null;
+            }
+
+        }
+
+        return null;
+    }
+
+    @Override
+    public int addBook() {
+        while (true) {
+            try {
+                int type = selectBookType();
+                switch (type) {
+                    case 1:
+                        SubjectBook newBook = enterSubBookDetails();
+                        stock.add(newBook);
+                        totalBooks = totalBooks + newBook.getNoOfCopies();
+                        break;
+                    case 2:
+                        OtherBooks newBook1 = enterOtherBookDetails();
+                        stock.add(newBook1);
+                        totalBooks = totalBooks + newBook1.getNoOfCopies();
+                        break;
+                    case 0:
+                        break;
+
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Not Valid Input");
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public void returnBook() {
+    }
 
     private static Integer takeOneDigitIntInput() {
         while (true) {
@@ -255,118 +372,6 @@ public class Library implements LibraryAdt {
             }
         }
         return BookID;
-    }
-
-    @Override
-    public int issueBook() {
-        Student student = getAndMatchStudent();
-        if (student == null) {
-            System.out.println("Sorry that student is not found in the database kindly add the Student first");
-            return 0;
-        } else {
-            System.out.println("Welcome, " + student.getFirstName());
-        }
-        Book book = getAndMatchBook();
-        if (book == null) {
-            System.out.println("Sorry, Book Not found");
-            return 0;
-        } else {
-            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
-            int res = takeOneDigitIntInput();
-            if (res == 1) {
-                if (checkAvailability(book)) {
-                    updateStudent(student, book);
-                    updateBook(book, student);
-                    issuedBooks++;
-                    System.out.println("Book issued Successfully");
-                } else {
-                    System.out.println("Sorry The Book is currently Out of Stock ! come back later");
-                }
-
-            } else if (res == 0) {
-                System.out.println("No Books Issued");
-            } else {
-                System.out.println("Invalid Input !");
-            }
-        }
-
-        return 0;
-    }
-
-    @Override
-    public void addStudent() {
-        int i;
-        String message;
-        System.out.println("How Many Students you want to add ?");
-        int student = sc.nextInt();
-        for (i = 0; i < student; i++) {
-            System.out.println("Enter " + (i + 1) + " Student Details:-");
-
-            studentDatabase.add(getNewStudentDetails());
-        }
-        if (i >= 1) {
-            message = i > 1 ? " Students Added SuccessFully" : " Student Added SuccessFully";
-            System.out.println((i) + message);
-        } else
-            System.out.println("Exited... No new Students Added");
-
-
-    }
-
-    @Override
-    public Book discardBook() {
-        Book book = getAndMatchBook();
-        if (book == null) {
-            System.out.println("No Book With this ID found");
-        } else {
-            System.out.println("You have chosen " + book.getName() + " press 1 to continue press 0 to exit");
-            int res = takeOneDigitIntInput();
-            if (res == 1) {
-                System.out.println(book.getNoOfCopies());
-                book.setNoOfCopies((book.getNoOfCopies() - 1));
-                System.out.println("Removed 1 copy of " + book.getName());
-                System.out.println(book.getNoOfCopies());
-                return null;
-            } else if (res == 0) {
-                System.out.println("Exited.");
-                return null;
-            }
-
-        }
-
-        return null;
-    }
-
-    @Override
-    public int addBook() {
-        while (true) {
-            try {
-                int type = selectBookType();
-                switch (type) {
-                    case 1:
-                        SubjectBook newBook = enterSubBookDetails();
-                        stock.add(newBook);
-                        totalBooks = totalBooks + newBook.getNoOfCopies();
-                        break;
-                    case 2:
-                        OtherBooks newBook1 = enterOtherBookDetails();
-                        stock.add(newBook1);
-                        totalBooks = totalBooks + newBook1.getNoOfCopies();
-                        break;
-                    case 0:
-                        break;
-
-                }
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Not Valid Input");
-            }
-        }
-        return 0;
-    }
-
-    @Override
-    public void returnBook() {
     }
 
     private Student getAndMatchStudent() {

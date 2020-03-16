@@ -1,6 +1,6 @@
 package Execution;
 
-import Definition.Library;
+import Definition.MyLibrary.Library;
 
 import java.util.Scanner;
 
@@ -57,6 +57,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Not Valid Input");
+                    sc.close();
                     break;
             }
         }
